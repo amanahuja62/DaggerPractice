@@ -2,7 +2,7 @@ package com.example.daggerpractice
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.daggerpractice.dagger.component.DaggerActivityComponent
+import com.example.daggerpractice.dagger.modules.PetrolEngineModule
 import com.example.daggerpractice.entities.Car
 import javax.inject.Inject
 
@@ -17,9 +17,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val myApplication = application as DaggerPracticeApplication
-        DaggerActivityComponent.builder().appComponent(myApplication.getAppComponent()).horsePower(1400).build().inject(this)
+        myApplication.getAppComponent().getActivityComponent(PetrolEngineModule(1900)).inject(this)
         car1.runCar()
+        car1.engine.runEngine()
         car2.runCar()
+        car2.engine.runEngine()
 
     }
 }
