@@ -10,9 +10,11 @@ import dagger.Component
 @AppScope
 @Component
 interface AppComponent {
-    fun getActivityComponent(petrolEngineModule: PetrolEngineModule) : ActivityComponent
+    fun getActivityComponentBuilder() : ActivityComponent.Builder
 }
 
 // we need to pass all modules of subcomponent as argument which are non-abstract and have constructor arguments
 //both WheelsModule and PetrolEngineModule are non abstarct, but
 // only PetrolEngine has constructor arguments so we will pass only petrolEngineModule
+
+//@AppScope directs DriverModule to AppComponent

@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val myApplication = application as DaggerPracticeApplication
-        myApplication.getAppComponent().getActivityComponent(PetrolEngineModule(1900)).inject(this)
+        myApplication.getAppComponent().getActivityComponentBuilder().horsePower(1700).build()
+            .inject(this)
         car1.runCar()
         car1.engine.runEngine()
         car2.runCar()
